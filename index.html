@@ -4,9 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KURVA</title>
+  <style>
+    #myImage {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <h1>Üdvözöljük!</h1>
-  <button onclick="alert('Kurva szád!')">Kattints rám!</button>
+  <button onclick="showImage()">Kattints rám!</button>
+  <img id="myImage" src="https://motherless.hu/media/videos/tmb/000/042/969/5.jpg" alt="Kép">
+  
+  <script>
+    function showImage() {
+      document.getElementById('myImage').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
