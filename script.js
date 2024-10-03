@@ -37,7 +37,7 @@ function spinAnimation() {
         document.getElementById('slot1').classList.remove('spin');
         document.getElementById('slot2').classList.remove('spin');
         document.getElementById('slot3').classList.remove('spin');
-    }, 1000);
+    }, 1000); // Az animáció 1 másodpercig tart
 }
 
 function play() {
@@ -60,24 +60,27 @@ function play() {
 
     spinAnimation();  // Slot mezők animálása
 
-    const slot1 = getRandomSymbol();
-    const slot2 = getRandomSymbol();
-    const slot3 = getRandomSymbol();
+    // 1 másodperc késleltetés, hogy a pörgetés animáció után jelenjenek meg az eredmények
+    setTimeout(() => {
+        const slot1 = getRandomSymbol();
+        const slot2 = getRandomSymbol();
+        const slot3 = getRandomSymbol();
 
-    document.getElementById('slot1').textContent = slot1;
-    document.getElementById('slot2').textContent = slot2;
-    document.getElementById('slot3').textContent = slot3;
+        document.getElementById('slot1').textContent = slot1;
+        document.getElementById('slot2').textContent = slot2;
+        document.getElementById('slot3').textContent = slot3;
 
-    const winnings = calculateWinnings(slot1, slot2, slot3, betAmount);
-    balance += winnings;
+        const winnings = calculateWinnings(slot1, slot2, slot3, betAmount);
+        balance += winnings;
 
-    let message = '';
-    if (winnings > 0) {
-        message = `Jackpot! You won ${winnings} coins!`;
-    } else {
-        message = 'Try again!';
-    }
+        let message = '';
+        if (winnings > 0) {
+            message = `Jackpot! You won ${winnings} coins!`;
+        } else {
+            message = 'Try again!';
+        }
 
-    document.getElementById('balance').textContent = `Balance: ${balance} Kaszinó Coin`;
-    document.getElementById('message').textContent = message;
+        document.getElementById('balance').textContent = `Balance: ${balance} Kaszinó Coin`;
+        document.getElementById('message').textContent = message;
+    }, 1000);  // A pörgetés után 1 másodperccel jelenik meg az eredmény
 }
