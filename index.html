@@ -31,7 +31,7 @@
             padding: 10px 20px;
             font-size: 1rem;
         }
-        .balance, .bet, .message {
+        .balance, .bet, .message, .jackpot {
             margin-top: 20px;
             font-size: 1.2rem;
         }
@@ -40,6 +40,14 @@
             width: 80px;
             font-size: 1rem;
             text-align: center;
+        }
+        @keyframes spin {
+            0% { transform: rotateX(0); }
+            100% { transform: rotateX(360deg); }
+        }
+
+        .slot {
+            animation: spin 1s ease-out;
         }
     </style>
 </head>
@@ -60,8 +68,10 @@
     <button onclick="play()">Play</button>
 
     <div class="balance" id="balance">Balance: 1000 Kaszinó Coin</div>
+    <div class="jackpot" id="jackpot">Jackpot: 1000 Kaszinó Coin</div>
     <div class="message" id="message"></div>
 
+    <!-- JavaScript fájl betöltése -->
     <script src="script.js"></script>
 </body>
 </html>
