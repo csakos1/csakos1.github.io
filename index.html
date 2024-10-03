@@ -1,25 +1,61 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KURVA</title>
-  <style>
-    #myImage {
-      display: none;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Slot Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .slot-machine {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .slot {
+            font-size: 2rem;
+            padding: 20px;
+            margin: 0 10px;
+            border: 2px solid #000;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+        .balance {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        .message {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: green;
+        }
+    </style>
 </head>
 <body>
-  <h1>Üdvözöljük!</h1>
-  <button onclick="showImage()">Kattints rám!</button>
-  <img id="myImage" src="https://motherless.hu/media/videos/tmb/000/042/969/5.jpg" alt="Kép">
-  
-  <script>
-    function showImage() {
-      document.getElementById('myImage').style.display = 'block';
-    }
-  </script>
+    <h1>Slot Machine Game</h1>
+
+    <div class="slot-machine">
+        <div class="slot" id="slot1">7</div>
+        <div class="slot" id="slot2">7</div>
+        <div class="slot" id="slot3">7</div>
+    </div>
+
+    <button onclick="play()">Play</button>
+
+    <div class="balance" id="balance">Balance: 1000 Kaszinó Coin</div>
+    <div class="message" id="message"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
