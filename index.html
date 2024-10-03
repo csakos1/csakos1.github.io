@@ -6,9 +6,19 @@
     <title>Slot Machine Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
+            font-family: 'Arial', sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
         .slot-machine {
             display: flex;
@@ -16,38 +26,61 @@
             margin-bottom: 20px;
         }
         .slot {
-            font-size: 2rem;
+            font-size: 2.5rem;
             padding: 20px;
-            margin: 0 10px;
-            border: 2px solid #000;
-            width: 80px;
-            height: 80px;
+            margin: 0 15px;
+            border: 3px solid #ecf0f1;
+            width: 100px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f4f4f4;
+            background-color: #34495e;
+            border-radius: 10px;
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .bet {
+            margin-right: 20px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c0392b;
         }
         .balance, .bet, .message, .jackpot {
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 1.2rem;
         }
         input[type="number"] {
-            padding: 5px;
-            width: 80px;
-            font-size: 1rem;
+            padding: 10px;
+            width: 100px;
+            font-size: 1.1rem;
             text-align: center;
+            border-radius: 5px;
+            border: 2px solid #ecf0f1;
+            background-color: #34495e;
+            color: #ecf0f1;
         }
-        @keyframes spin {
-            0% { transform: rotateX(0); }
-            100% { transform: rotateX(360deg); }
+        .message {
+            font-size: 1.3rem;
+            margin-top: 25px;
+            font-weight: bold;
         }
-
-        .slot {
-            animation: spin 1s ease-out;
+        .jackpot {
+            color: #f1c40f;
         }
     </style>
 </head>
@@ -60,12 +93,13 @@
         <div class="slot" id="slot3">7</div>
     </div>
 
-    <div class="bet">
-        <label for="betAmount">Tét: </label>
-        <input type="number" id="betAmount" value="10" min="10" step="10">
+    <div class="controls">
+        <div class="bet">
+            <label for="betAmount">Tét: </label>
+            <input type="number" id="betAmount" value="10" min="10" step="10">
+        </div>
+        <button onclick="play()">Play</button>
     </div>
-
-    <button onclick="play()">Play</button>
 
     <div class="balance" id="balance">Balance: 1000 Kaszinó Coin</div>
     <div class="jackpot" id="jackpot">Jackpot: 1000 Kaszinó Coin</div>
