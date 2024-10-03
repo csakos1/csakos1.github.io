@@ -1,8 +1,9 @@
 let balance = 1000;
-let jackpot = 1000;  // Kezdő jackpot érték
+let jackpot = 1000;
+
+const symbols = ['🍒', '🍋', '🔔', '⭐', '7'];
 
 function getRandomSymbol() {
-    const symbols = ['🍒', '🍋', '🔔', '⭐', '7'];
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
@@ -16,9 +17,8 @@ function calculateWinnings(slot1, slot2, slot3, bet) {
     };
 
     if (slot1 === '7' && slot2 === '7' && slot3 === '7') {
-        // Jackpot nyeremény három 7-esnél
         const jackpotWinnings = jackpot;
-        jackpot = 1000;  // Visszaállítjuk a jackpotot
+        jackpot = 1000;
         return jackpotWinnings;
     } else if (slot1 === slot2 && slot2 === slot3) {
         return bet * symbolValues[slot1];
@@ -28,16 +28,16 @@ function calculateWinnings(slot1, slot2, slot3, bet) {
     return 0;
 }
 
-function spinAnimation() {
-    document.getElementById('slot1').classList.add('spin');
-    document.getElementById('slot2').classList.add('spin');
-    document.getElementById('slot3').classList.add('spin');
-
+function spinAnimation(slot, newSymbol) {
+    const slotInner = document.getElementById(slot);
+    slotInner.style.transform = 'translateY(100%)';
     setTimeout(() => {
-        document.getElementById('slot1').classList.remove('spin');
-        document.getElementById('slot2').classList.remove('spin');
-        document.getElementById('slot3').classList.remove('spin');
-    }, 1000); // Az animáció 1 másodpercig tart
+        slotInner.textContent = newSymbol;
+        slotInner.style.transform = 'translateY(-100%)';
+        setTimeout(() => {
+            slotInner.style.transform = 'translateY(0)';
+        }, 200);
+    }, 300);
 }
 
 function play() {
@@ -53,24 +53,20 @@ function play() {
         return;
     }
 
-    // Pörgetés előtt a tét levonása a megfelelő összeggel
     balance -= betAmount;
-    jackpot += betAmount * 0.1;  // A tét 10%-a a jackpotba kerül
+    jackpot += betAmount * 0.1;
     document.getElementById('jackpot').textContent = `Jackpot: ${Math.floor(jackpot)} Kaszinó Coin`;
 
-    spinAnimation();  // Slot mezők animálása
+    const slot1Symbol = getRandomSymbol();
+    const slot2Symbol = getRandomSymbol();
+    const slot3Symbol = getRandomSymbol();
 
-    // 1 másodperc késleltetés, hogy a pörgetés animáció után jelenjenek meg az eredmények
+    spinAnimation('slot1', slot1Symbol);
+    spinAnimation('slot2', slot2Symbol);
+    spinAnimation('slot3', slot3Symbol);
+
     setTimeout(() => {
-        const slot1 = getRandomSymbol();
-        const slot2 = getRandomSymbol();
-        const slot3 = getRandomSymbol();
-
-        document.getElementById('slot1').textContent = slot1;
-        document.getElementById('slot2').textContent = slot2;
-        document.getElementById('slot3').textContent = slot3;
-
-        const winnings = calculateWinnings(slot1, slot2, slot3, betAmount);
+        const winnings = calculateWinnings(slot1Symbol, slot2Symbol, slot3Symbol, betAmount);
         balance += winnings;
 
         let message = '';
@@ -82,5 +78,5 @@ function play() {
 
         document.getElementById('balance').textContent = `Balance: ${balance} Kaszinó Coin`;
         document.getElementById('message').textContent = message;
-    }, 1000);  // A pörgetés után 1 másodperccel jelenik meg az eredmény
+    }, 1000); 
 }
