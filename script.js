@@ -30,14 +30,15 @@ function calculateWinnings(slot1, slot2, slot3, bet) {
 
 function spinAnimation(slot, newSymbol) {
     const slotInner = document.getElementById(slot);
-    slotInner.style.transform = 'translateY(100%)';
+    slotInner.style.transition = 'none';
+    slotInner.style.transform = 'translateY(-100%)';
     setTimeout(() => {
-        slotInner.textContent = newSymbol;
-        slotInner.style.transform = 'translateY(-100%)';
+        slotInner.style.transition = 'transform 0.5s ease-out';
+        slotInner.style.transform = 'translateY(0)';
         setTimeout(() => {
-            slotInner.style.transform = 'translateY(0)';
-        }, 200);
-    }, 300);
+            slotInner.textContent = newSymbol;
+        }, 500);
+    }, 50);
 }
 
 function play() {
@@ -54,29 +55,28 @@ function play() {
     }
 
     balance -= betAmount;
-    jackpot += betAmount * 0.1;
-    document.getElementById('jackpot').textContent = `Jackpot: ${Math.floor(jackpot)} Kaszinó Coin`;
+    jackpot += betAmount;
 
-    const slot1Symbol = getRandomSymbol();
-    const slot2Symbol = getRandomSymbol();
-    const slot3Symbol = getRandomSymbol();
+    const slot1Result = getRandomSymbol();
+    const slot2Result = getRandomSymbol();
+    const slot3Result = getRandomSymbol();
 
-    spinAnimation('slot1', slot1Symbol);
-    spinAnimation('slot2', slot2Symbol);
-    spinAnimation('slot3', slot3Symbol);
+    spinAnimation('slot1', slot1Result);
+    spinAnimation('slot2', slot2Result);
+    spinAnimation('slot3', slot3Result);
 
     setTimeout(() => {
-        const winnings = calculateWinnings(slot1Symbol, slot2Symbol, slot3Symbol, betAmount);
+        const winnings = calculateWinnings(slot1Result, slot2Result, slot3Result, betAmount);
         balance += winnings;
 
-        let message = '';
-        if (winnings > 0) {
-            message = `Jackpot! You won ${winnings} coins!`;
-        } else {
-            message = 'Try again!';
-        }
+        document.getElementById('balance').textContent = `Balance: ${balance} Kurva Coin`;
+        document.getElementById('jackpot').textContent = `Jackpot: ${jackpot} Kurva Coin`;
 
-        document.getElementById('balance').textContent = `Balance: ${balance} Kaszinó Coin`;
-        document.getElementById('message').textContent = message;
-    }, 1000); 
+        if (winnings > 0) {
+            document.getElementById('message').textContent = `You won ${winnings} Kurva Coin!`;
+        } else {
+            document.getElementById('message').textContent = 'No win this time. Try again!';
+        }
+    }, 600);  // Várunk, amíg az animáció befejeződik
 }
+
