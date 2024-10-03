@@ -1,4 +1,5 @@
 let balance = 1000;
+let jackpot = 1000;  // Kezdő jackpot érték
 
 function getRandomSymbol() {
     const symbols = ['🍒', '🍋', '🔔', '⭐', '7'];
@@ -6,7 +7,6 @@ function getRandomSymbol() {
 }
 
 function calculateWinnings(slot1, slot2, slot3, bet) {
-    // Minden szimbólum más értéket ér
     const symbolValues = {
         '🍒': 2,
         '🍋': 3,
@@ -15,14 +15,29 @@ function calculateWinnings(slot1, slot2, slot3, bet) {
         '7': 20
     };
 
-    if (slot1 === slot2 && slot2 === slot3) {
-        // Ha mindhárom szimbólum ugyanaz, akkor az érték a tét szorzatát adja vissza
+    if (slot1 === '7' && slot2 === '7' && slot3 === '7') {
+        // Jackpot nyeremény három 7-esnél
+        const jackpotWinnings = jackpot;
+        jackpot = 1000;  // Visszaállítjuk a jackpotot
+        return jackpotWinnings;
+    } else if (slot1 === slot2 && slot2 === slot3) {
         return bet * symbolValues[slot1];
     } else if (slot1 === slot2 || slot2 === slot3 || slot1 === slot3) {
-        // Ha két szimbólum egyezik, kisebb nyeremény
         return bet * 2;
     }
-    return 0;  // Ha nincs találat, nincs nyeremény
+    return 0;
+}
+
+function spinAnimation() {
+    document.getElementById('slot1').classList.add('spin');
+    document.getElementById('slot2').classList.add('spin');
+    document.getElementById('slot3').classList.add('spin');
+
+    setTimeout(() => {
+        document.getElementById('slot1').classList.remove('spin');
+        document.getElementById('slot2').classList.remove('spin');
+        document.getElementById('slot3').classList.remove('spin');
+    }, 1000);
 }
 
 function play() {
@@ -38,8 +53,12 @@ function play() {
         return;
     }
 
-    // Pörgetés előtt a tét levonása
+    // Pörgetés előtt a tét levonása a megfelelő összeggel
     balance -= betAmount;
+    jackpot += betAmount * 0.1;  // A tét 10%-a a jackpotba kerül
+    document.getElementById('jackpot').textContent = `Jackpot: ${Math.floor(jackpot)} Kaszinó Coin`;
+
+    spinAnimation();  // Slot mezők animálása
 
     const slot1 = getRandomSymbol();
     const slot2 = getRandomSymbol();
