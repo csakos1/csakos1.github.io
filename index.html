@@ -1,163 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurva Casino</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .slot-machine {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 600px;
-        }
-        .slot {
-            font-size: 2.5rem;
-            padding: 20px;
-            margin: 0 15px;
-            border: 3px solid #ecf0f1;
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #34495e;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .slot-inner {
-            transition: transform 0.5s ease-in-out; /* Gyorsabb animáció */
-        }
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 600px;
-        }
-        .bet {
-            margin-right: 20px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background-color: #e74c3c;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-bottom: 10px;
-        }
-        button:hover {
-            background-color: #c0392b;
-        }
-        .balance, .bet, .message, .jackpot {
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-        input[type="number"] {
-            padding: 10px;
-            width: 80px;
-            font-size: 1.1rem;
-            text-align: center;
-            border-radius: 5px;
-            border: 2px solid #ecf0f1;
-            background-color: #34495e;
-            color: #ecf0f1;
-        }
-        .message {
-            font-size: 1.3rem;
-            margin-top: 25px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .jackpot {
-            color: #f1c40f;
-        }
-
-        /* Reszponzív szabályok */
-        @media (max-width: 768px) {
-            .slot {
-                font-size: 2rem;
-                width: 80px;
-                height: 80px;
-                margin: 0 10px;
-            }
-            button {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slot-machine {
-                max-width: 300px;
-                justify-content: space-between;
-            }
-            .slot {
-                width: 60px;
-                height: 60px;
-                margin: 0 5px;
-            }
-            button {
-                padding: 8px 15px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <title>Véletlen Kérdőív</title>
 </head>
 <body>
-    <h1>Kurva Casino</h1>
+    <script>
+        const kerdoivek = [
+            "https://forms.gle/link_1",  // helyettesítsd a saját 1. kérdőív linkeddel
+            "https://forms.gle/link_2",  // helyettesítsd a saját 2. kérdőív linkeddel
+            "https://forms.gle/link_3"   // helyettesítsd a saját 3. kérdőív linkeddel
+        ];
 
-    <div class="slot-machine">
-        <div class="slot">
-            <div class="slot-inner" id="slot1">🍒</div>
-        </div>
-        <div class="slot">
-            <div class="slot-inner" id="slot2">🍋</div>
-        </div>
-        <div class="slot">
-            <div class="slot-inner" id="slot3">⭐</div>
-        </div>
-    </div>
-
-    <div class="controls">
-        <div class="bet">
-            <label for="betAmount">Bet: </label>
-            <input type="number" id="betAmount" value="10" min="10" step="10">
-        </div>
-        <button onclick="play()">Play</button>
-    </div>
-
-    <div class="balance" id="balance">Balance: 1000 Kurva Coin</div>
-    <div class="jackpot" id="jackpot">Jackpot: 1000 Kurva Coin</div>
-    <div class="message" id="message"></div>
-
-    <script src="script.js"></script>
+        window.location.href = kerdoivek[Math.floor(Math.random() * kerdoivek.length)];
+    </script>
 </body>
 </html>
