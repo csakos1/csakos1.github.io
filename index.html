@@ -20,7 +20,6 @@
       color: #fff;
       padding: 2rem 1rem;
       text-align: center;
-      /* Ívelt alsó sarkok */
       border-bottom-left-radius: 50% 10%;
       border-bottom-right-radius: 50% 10%;
     }
@@ -43,6 +42,10 @@
       margin-bottom: 1.5rem;
       font-size: 2.2rem;
       color: #0077cc;
+    }
+    /* Csak a Features szekciónál kevesebb felső margó */
+    #features h2 {
+      margin-top: 1rem;
     }
     #about p {
       text-align: center;
@@ -79,13 +82,17 @@
       margin: 0.8rem 0 0;
       line-height: 1.6;
     }
-    /* Letöltési rész */
+    /* Letöltési rész: Középre igazítás */
     #download {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       margin: 2rem 0;
+    }
+    #download h2 {
+      margin-top: 0;
+      text-align: center;
     }
     #download p {
       font-size: 1.15rem;
@@ -106,14 +113,13 @@
       background: #005fa3;
       transform: translateY(-2px);
     }
-    /* Lábléc */
+    /* Lábléc: Ugyanolyan dizájn, mint a fejléc */
     footer {
       background: linear-gradient(135deg, #0077cc, #005fa3);
       color: #fff;
       text-align: center;
       padding: 1.5rem;
       margin-top: 2rem;
-      /* Ívelt felső sarkok a fejléchez hasonlóan */
       border-top-left-radius: 50% 10%;
       border-top-right-radius: 50% 10%;
     }
