@@ -1,18 +1,145 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Véletlen Kérdőív</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NotThatTrip - Your Ultimate iOS Travel Planner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #0077cc;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0 0;
+    }
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #0077cc;
+    }
+    #about p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 0 auto 2rem;
+      max-width: 800px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1rem;
+    }
+    .feature {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      flex: 1 1 250px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .feature h3 {
+      margin-top: 0;
+      color: #0077cc;
+    }
+    #download {
+      text-align: center;
+    }
+    #download p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .button {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #0077cc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .button:hover {
+      background: #005fa3;
+    }
+    footer {
+      background: #0077cc;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-    <script>
-        const kerdoivek = [
-            "https://youtube.com",  // helyettesítsd a saját 1. kérdőív linkeddel
-            "https://instagram.com",  // helyettesítsd a saját 2. kérdőív linkeddel
-            "https://facebook.com"   // helyettesítsd a saját 3. kérdőív linkeddel
-        ];
+  <header>
+    <h1>NotThatTrip</h1>
+    <p>Your Ultimate iOS Travel Planner</p>
+  </header>
 
-        window.location.href = kerdoivek[Math.floor(Math.random() * kerdoivek.length)];
-    </script>
+  <section id="about">
+    <h2>About NotThatTrip</h2>
+    <p>
+      NotThatTrip is a cutting-edge travel planning app designed specifically for iOS. Built with Swift and SwiftUI, it allows you to create detailed trips, organize them by day, and manage your destinations seamlessly. Whether you’re traveling by car or on foot, the integrated dynamic route planner with Apple Maps offers real-time travel times and intuitive visuals.
+    </p>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Trip Planning</h3>
+        <p>Create and organize trips effortlessly by dividing them into individual days.</p>
+      </div>
+      <div class="feature">
+        <h3>Itinerary Management</h3>
+        <p>Add, edit, and manage destinations with custom notes and selectable transportation modes.</p>
+      </div>
+      <div class="feature">
+        <h3>Dynamic Mapping</h3>
+        <p>Visualize your routes on Apple Maps with detailed travel time annotations for both driving and walking.</p>
+      </div>
+      <div class="feature">
+        <h3>Adaptive UI</h3>
+        <p>Enjoy a modern, sleek interface that automatically adjusts for light and dark modes.</p>
+      </div>
+      <div class="feature">
+        <h3>User-Friendly Experience</h3>
+        <p>Interactive elements and intuitive design make travel planning both fun and efficient.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <h2>Get Started</h2>
+    <p>
+      Clone the repository and open the project in Xcode to build and run the app on your iOS device or simulator. NotThatTrip requires iOS 16.6+ and Xcode 12+.
+    </p>
+    <a class="button" href="https://github.com/yourusername/NotThatTrip" target="_blank">View on GitHub</a>
+  </section>
+
+  <footer>
+    <p>© 2025 NotThatTrip. Developed and maintained by Csaba Ákos.</p>
+  </footer>
 </body>
 </html>
+
